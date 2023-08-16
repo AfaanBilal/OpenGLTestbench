@@ -24,6 +24,7 @@
 #include "IndexBuffer.h"
 #include "VertexArray.h"
 
+#include "tests/Test.h"
 #include "tests/TestClearColor.h"
 #include "tests/TestBasicTriangle.h"
 
@@ -38,7 +39,7 @@ int main()
 
 	UIManager::Initialize(window);
 
-	Vertex vertices[] = {
+	/*Vertex vertices[] = {
 		{ { -0.5f, -0.5f }, { 0.1f, 0.8f, 0.8f, 1.0f } },
 		{ {  0.5f, -0.5f }, { 0.1f, 0.8f, 0.8f, 1.0f } },
 		{ {  0.5f,  0.5f }, { 0.1f, 0.8f, 0.8f, 1.0f } },
@@ -61,33 +62,47 @@ int main()
 
 	IndexBuffer ib(indices, 6);
 
-	Shader shader("src/shaders/basic.vert", "src/shaders/basic.frag");
+	Shader shader("src/shaders/basic.vert", "src/shaders/basic.frag");*/
 	
 	Renderer renderer;
-	//test::TestClearColor test;
-	test::TestBasicTriangle test;
+
+	test::Test* current = nullptr;
+	test::Menu* menu = new test::Menu(current);
+	current = menu;
+
+	menu->AddTest<test::TestClearColor>("Clear color");
+	menu->AddTest<test::TestBasicTriangle>("Basic Triangle");
 
 	while (!glfwWindowShouldClose(window))
 	{
 		renderer.Clear();
 
-		test.OnUpdate(0.0f);
-		test.OnRender(renderer);
-
 		UIManager::SetupFrame();
 
-		test.OnUIRender();
+		if (current)
+		{
+			current->OnUpdate(0.0f);
+			current->OnRender(renderer);
 
-		ImGui::ShowDemoWindow();
+			ImGui::Begin("Test");
+			
+			if (current != menu && ImGui::Button("<-"))
+			{
+				delete current;
+				current = menu;
+			}
 
-		renderer.Draw(va, ib, shader);
+			current->OnUIRender();
+			ImGui::End();
+		}
+
+		//ImGui::ShowDemoWindow();
 
 		UIManager::RenderFrame();
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
 
-	shader.Unbind();
 	UIManager::Terminate();
 	WindowManager::Terminate();
 	return 0;
