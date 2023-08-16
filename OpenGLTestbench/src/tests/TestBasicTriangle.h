@@ -21,7 +21,7 @@ namespace test
 		~TestBasicTriangle();
 
 		void OnUpdate(float deltaTime) override;
-		void OnRender() override;
+		void OnRender(Renderer& renderer) override;
 		void OnUIRender() override;
 	private:
 		Vertex m_Verticies[3];

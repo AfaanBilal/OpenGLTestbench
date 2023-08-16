@@ -25,6 +25,7 @@
 #include "VertexArray.h"
 
 #include "tests/TestClearColor.h"
+#include "tests/TestBasicTriangle.h"
 
 int main()
 {
@@ -64,14 +65,15 @@ int main()
 	shaderManager.Bind();
 
 	Renderer renderer;
-	test::TestClearColor test;
+	//test::TestClearColor test;
+	test::TestBasicTriangle test;
 
 	while (!glfwWindowShouldClose(window))
 	{
 		renderer.Clear();
 
 		test.OnUpdate(0.0f);
-		test.OnRender();
+		test.OnRender(renderer);
 
 		UIManager::SetupFrame();
 

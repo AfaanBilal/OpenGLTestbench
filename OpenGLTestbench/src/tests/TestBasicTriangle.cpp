@@ -10,6 +10,12 @@
 
 #include "imgui.h"
 
+#include "Renderer.h"
+#include "VertexBuffer.h"
+#include "VertexBufferLayout.h"
+#include "IndexBuffer.h"
+#include "VertexArray.h"
+
 #include "TestBasicTriangle.h"
 
 namespace test
@@ -26,13 +32,32 @@ namespace test
 
 	void TestBasicTriangle::OnUpdate(float deltaTime) {}
 
-	void TestBasicTriangle::OnRender()
+	void TestBasicTriangle::OnRender(Renderer& renderer)
 	{
-		
+		VertexBuffer vb(m_Verticies, sizeof(m_Verticies));
+
+		VertexBufferLayout layout;
+		layout.Push<float>(2);
+		layout.Push<float>(4);
+
+		VertexArray va;
+		va.AddBuffer(vb, layout);
+
+		unsigned int indices[] = {0, 1, 2};
+
+		IndexBuffer ib(indices, 3);
+
+		vb.Bind();
+		va.Bind();
+		ib.Bind();
+
+		renderer.Draw(indices);
 	}
 
 	void TestBasicTriangle::OnUIRender()
 	{
-		ImGui::ColorEdit4("Color", &m_Color.r);
+		ImGui::DragFloat2("Point 1", &m_Verticies[0].position.x);
+		ImGui::DragFloat2("Point 2", &m_Verticies[1].position.x);
+		ImGui::DragFloat2("Point 3", &m_Verticies[2].position.x);
 	}
 }

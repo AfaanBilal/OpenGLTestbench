@@ -9,6 +9,8 @@
 
 #include "glm/vec4.hpp"
 
+#include "Renderer.h"
+
 #include "Test.h"
 
 namespace test
@@ -20,7 +22,7 @@ namespace test
 		~TestClearColor();
 
 		void OnUpdate(float deltaTime) override;
-		void OnRender() override;
+		void OnRender(Renderer& renderer) override;
 		void OnUIRender() override;
 	private:
 		glm::vec4 m_ClearColor;
