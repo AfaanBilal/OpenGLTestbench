@@ -22,6 +22,7 @@
 
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
+#include "VertexArray.h"
 
 #include "tests/TestClearColor.h"
 
@@ -47,11 +48,12 @@ int main()
 
 	VertexBuffer vb(vertices, sizeof(vertices));
 
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)offsetof(Vertex, position));
+	VertexBufferLayout layout;
+	layout.Push<float>(2);
+	layout.Push<float>(4);
 
-	glEnableVertexAttribArray(1);
-	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)offsetof(Vertex, color));
+	VertexArray va;
+	va.AddBuffer(vb, layout);
 
 	unsigned int indices[] = { 
 		0, 1, 2, 
@@ -79,6 +81,7 @@ int main()
 		ImGui::ShowDemoWindow();
 
 		vb.Bind();
+		va.Bind();
 		ib.Bind();
 		renderer.Draw(indices);
 

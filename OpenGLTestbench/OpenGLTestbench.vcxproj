@@ -87,7 +87,9 @@
     <ClInclude Include="src\tests\TestBasicTriangle.h" />
     <ClInclude Include="src\tests\TestClearColor.h" />
     <ClInclude Include="src\Vertex.h" />
+    <ClInclude Include="src\VertexArray.h" />
     <ClInclude Include="src\VertexBuffer.h" />
+    <ClInclude Include="src\VertexBufferLayout.h" />
     <ClInclude Include="src\WindowManager.h" />
     <ClInclude Include="src\UIManager.h" />
     <ClInclude Include="vendor\imgui\backends\imgui_impl_glfw.h" />
@@ -107,6 +109,7 @@
     <ClCompile Include="src\tests\TestBasicTriangle.cpp" />
     <ClCompile Include="src\tests\TestClearColor.cpp" />
     <ClCompile Include="src\UIManager.cpp" />
+    <ClCompile Include="src\VertexArray.cpp" />
     <ClCompile Include="src\VertexBuffer.cpp" />
     <ClCompile Include="src\WindowManager.cpp" />
     <ClCompile Include="vendor\imgui\backends\imgui_impl_glfw.cpp" />
