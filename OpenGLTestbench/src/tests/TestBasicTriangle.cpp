@@ -15,6 +15,7 @@
 #include "VertexBufferLayout.h"
 #include "IndexBuffer.h"
 #include "VertexArray.h"
+#include "Shader.h"
 
 #include "TestBasicTriangle.h"
 
@@ -47,11 +48,9 @@ namespace test
 
 		IndexBuffer ib(indices, 3);
 
-		vb.Bind();
-		va.Bind();
-		ib.Bind();
+		Shader shader("src/shaders/basic.vert", "src/shaders/basic.frag");
 
-		renderer.Draw(indices);
+		renderer.Draw(va, ib, shader);
 	}
 
 	void TestBasicTriangle::OnUIRender()

@@ -10,14 +10,14 @@
 #include <string>
 #include <tuple>
 
-class ShaderManager
+class Shader
 {
 private:
 	int m_Program;
 public:
-	ShaderManager(const char*, const char*);
+	Shader(const char*, const char*);
 	std::tuple<std::string, std::string> LoadShaderSource(const char*, const char*);
 	static int CompileShaders(const std::string&, const std::string&);
-	void Bind();
-	void Unbind();
+	void Bind() const;
+	void Unbind() const;
 };

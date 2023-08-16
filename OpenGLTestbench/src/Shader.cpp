@@ -12,15 +12,15 @@
 #include <sstream>
 #include <GL/glew.h>
 
-#include "ShaderManager.h"
+#include "Shader.h"
 
-ShaderManager::ShaderManager(const char* vertexShaderFilepath, const char* fragmentShaderFilepath)
+Shader::Shader(const char* vertexShaderFilepath, const char* fragmentShaderFilepath)
 {
 	auto [vertexShaderSource, fragmentShaderSource] = LoadShaderSource(vertexShaderFilepath, fragmentShaderFilepath);
 	m_Program = CompileShaders(vertexShaderSource, fragmentShaderSource);
 }
 
-std::tuple<std::string, std::string> ShaderManager::LoadShaderSource(const char* vertexShaderFilepath, const char* fragmentShaderFilepath)
+std::tuple<std::string, std::string> Shader::LoadShaderSource(const char* vertexShaderFilepath, const char* fragmentShaderFilepath)
 {
 	std::fstream vfs(vertexShaderFilepath), ffs(fragmentShaderFilepath);
 	std::stringstream vertexSource, fragmentSource;
@@ -31,7 +31,7 @@ std::tuple<std::string, std::string> ShaderManager::LoadShaderSource(const char*
 	return { vertexSource.str(), fragmentSource.str() };
 }
 
-int ShaderManager::CompileShaders(const std::string& vertexShaderSource, const std::string& fragmentShaderSource)
+int Shader::CompileShaders(const std::string& vertexShaderSource, const std::string& fragmentShaderSource)
 {
 	const char* vSource = vertexShaderSource.c_str();
 	const char* fSource = fragmentShaderSource.c_str();
@@ -55,12 +55,12 @@ int ShaderManager::CompileShaders(const std::string& vertexShaderSource, const s
 	return program;
 }
 
-void ShaderManager::Bind()
+void Shader::Bind() const
 {
 	glUseProgram(m_Program);
 }
 
-void ShaderManager::Unbind()
+void Shader::Unbind() const
 {
 	glDeleteProgram(m_Program);
 }

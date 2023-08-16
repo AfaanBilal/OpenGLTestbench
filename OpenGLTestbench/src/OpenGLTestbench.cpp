@@ -17,7 +17,7 @@
 #include "Vertex.h"
 #include "WindowManager.h"
 #include "UIManager.h"
-#include "ShaderManager.h"
+#include "Shader.h"
 #include "Renderer.h"
 
 #include "VertexBuffer.h"
@@ -61,9 +61,8 @@ int main()
 
 	IndexBuffer ib(indices, 6);
 
-	ShaderManager shaderManager("src/shaders/basic.vert", "src/shaders/basic.frag");
-	shaderManager.Bind();
-
+	Shader shader("src/shaders/basic.vert", "src/shaders/basic.frag");
+	
 	Renderer renderer;
 	//test::TestClearColor test;
 	test::TestBasicTriangle test;
@@ -81,17 +80,14 @@ int main()
 
 		ImGui::ShowDemoWindow();
 
-		vb.Bind();
-		va.Bind();
-		ib.Bind();
-		renderer.Draw(indices);
+		renderer.Draw(va, ib, shader);
 
 		UIManager::RenderFrame();
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
 
-	shaderManager.Unbind();
+	shader.Unbind();
 	UIManager::Terminate();
 	WindowManager::Terminate();
 	return 0;
