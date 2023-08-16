@@ -7,14 +7,14 @@
  * @link   https://github.com/AfaanBilal/OpenGLTestbench
  */
 
-#include <GL/glew.h>
-
-class Renderer
+class VertexBuffer
 {
+private:
+	unsigned int m_RendererID;
 public:
-	Renderer();
-	~Renderer();
+	VertexBuffer(const void* data, unsigned int size);
+	~VertexBuffer();
 
-	void Clear() const;
-	void Draw(const unsigned int* indices) const;
+	void Bind() const;
+	void Unbind() const;
 };

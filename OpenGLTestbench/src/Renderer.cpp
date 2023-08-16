@@ -19,7 +19,7 @@ void Renderer::Clear() const
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void Renderer::Draw() const
+void Renderer::Draw(const unsigned int* indices) const
 {
-	glDrawArrays(GL_TRIANGLES, 0, 3);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 }
