@@ -7,6 +7,7 @@
  */
 
 #include <iostream>
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 int main()
@@ -28,6 +29,12 @@ int main()
 
     glfwMakeContextCurrent(window);
 
+    GLenum err = glewInit();
+    if (GLEW_OK != err)
+    {
+        std::cout <<  "GLEW Error: " << glewGetErrorString(err) << std::endl;
+    }
+    std::cout << "GLEW: " << glewGetString(GLEW_VERSION) << std::endl;
 
     while (!glfwWindowShouldClose(window))
     {
