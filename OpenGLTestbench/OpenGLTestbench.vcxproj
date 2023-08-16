@@ -82,6 +82,8 @@
   <ItemGroup>
     <ClInclude Include="src\OpenGLTestbench.h" />
     <ClInclude Include="src\ShaderManager.h" />
+    <ClInclude Include="src\tests\Test.h" />
+    <ClInclude Include="src\tests\TestClearColor.h" />
     <ClInclude Include="src\WindowManager.h" />
     <ClInclude Include="src\UIManager.h" />
     <ClInclude Include="vendor\imgui\backends\imgui_impl_glfw.h" />
@@ -96,6 +98,8 @@
   <ItemGroup>
     <ClCompile Include="src\OpenGLTestbench.cpp" />
     <ClCompile Include="src\ShaderManager.cpp" />
+    <ClCompile Include="src\tests\Test.cpp" />
+    <ClCompile Include="src\tests\TestClearColor.cpp" />
     <ClCompile Include="src\UIManager.cpp" />
     <ClCompile Include="src\WindowManager.cpp" />
     <ClCompile Include="vendor\imgui\backends\imgui_impl_glfw.cpp" />

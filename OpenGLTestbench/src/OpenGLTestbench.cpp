@@ -19,6 +19,8 @@
 #include "UIManager.h"
 #include "ShaderManager.h"
 
+#include "tests/TestClearColor.h"
+
 int main()
 {
 	std::cout << "OpenGL Testbench" << std::endl;
@@ -49,11 +51,16 @@ int main()
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)offsetof(Vertex, color));
 
+	test::TestClearColor test;
+
 	while (!glfwWindowShouldClose(window))
 	{
-		glfwPollEvents();
+		test.OnUpdate(0.0f);
+		test.OnRender();
 
 		UIManager::SetupFrame();
+
+		test.OnUIRender();
 
 		ImGui::ShowDemoWindow();
 
@@ -64,6 +71,7 @@ int main()
 
 		UIManager::RenderFrame();
 		glfwSwapBuffers(window);
+		glfwPollEvents();
 	}
 
 	shaderManager.Unload();
