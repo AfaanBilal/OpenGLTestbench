@@ -1,0 +1,4 @@
+[submodule "OpenGLTestbench/vendor/imgui"]
+	path = OpenGLTestbench/vendor/imgui
+	url = https://github.com/ocornut/imgui
+	branch = docking
