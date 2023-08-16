@@ -55,12 +55,12 @@ int ShaderManager::CompileShaders(const std::string& vertexShaderSource, const s
 	return program;
 }
 
-void ShaderManager::Load()
+void ShaderManager::Bind()
 {
 	glUseProgram(m_Program);
 }
 
-void ShaderManager::Unload()
+void ShaderManager::Unbind()
 {
 	glDeleteProgram(m_Program);
 }

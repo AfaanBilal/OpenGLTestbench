@@ -37,8 +37,6 @@ int main()
 
 	UIManager::Initialize(window);
 
-	ShaderManager shaderManager("src/shaders/basic.vert", "src/shaders/basic.frag");
-
 	Vertex vertices[] = {
 		{ { -0.5f, -0.5f }, { 0.1f, 0.8f, 0.8f, 1.0f } },
 		{ {  0.5f, -0.5f }, { 0.1f, 0.8f, 0.8f, 1.0f } },
@@ -62,7 +60,8 @@ int main()
 
 	IndexBuffer ib(indices, 6);
 
-	shaderManager.Load();
+	ShaderManager shaderManager("src/shaders/basic.vert", "src/shaders/basic.frag");
+	shaderManager.Bind();
 
 	Renderer renderer;
 	test::TestClearColor test;
@@ -90,7 +89,7 @@ int main()
 		glfwPollEvents();
 	}
 
-	shaderManager.Unload();
+	shaderManager.Unbind();
 	UIManager::Terminate();
 	WindowManager::Terminate();
 	return 0;

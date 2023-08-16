@@ -18,6 +18,6 @@ public:
 	ShaderManager(const char*, const char*);
 	std::tuple<std::string, std::string> LoadShaderSource(const char*, const char*);
 	static int CompileShaders(const std::string&, const std::string&);
-	void Load();
-	void Unload();
+	void Bind();
+	void Unbind();
 };
