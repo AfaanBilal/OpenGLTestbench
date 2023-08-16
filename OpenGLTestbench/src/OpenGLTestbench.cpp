@@ -45,25 +45,16 @@ int main()
 
 	while (!glfwWindowShouldClose(window))
 	{
-		glClear(GL_COLOR_BUFFER_BIT);
-
-		glDrawArrays(GL_TRIANGLES, 0, 3);
-
 		glfwPollEvents();
 
-		// ImGui frame setup
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
-		ImGui::NewFrame();
-		ImGui::ShowDemoWindow(); // Show demo window! :)
+		UIManager::SetupFrame();
 
-		// Rendering
-		// (Your code clears your framebuffer, renders your other stuff etc.)
+		ImGui::ShowDemoWindow();
 
-		ImGui::Render();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-		// (Your code calls glfwSwapBuffers() etc.)
+		glClear(GL_COLOR_BUFFER_BIT);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
 
+		UIManager::RenderFrame();
 		glfwSwapBuffers(window);
 	}
 

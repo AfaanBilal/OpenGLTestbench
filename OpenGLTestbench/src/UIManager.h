@@ -12,4 +12,6 @@ class UIManager
 public:
 	static void Initialize(GLFWwindow* window);
 	static void Terminate();
+	static void SetupFrame();
+	static void RenderFrame();
 };
