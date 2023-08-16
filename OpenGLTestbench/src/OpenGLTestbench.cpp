@@ -103,6 +103,10 @@ int main()
 		glfwPollEvents();
 	}
 
+	if (current != menu)
+		delete menu;
+	delete current;
+
 	UIManager::Terminate();
 	WindowManager::Terminate();
 	return 0;
