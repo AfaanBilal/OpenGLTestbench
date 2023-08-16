@@ -26,13 +26,13 @@ int main()
 	GLFWwindow* window = WindowManager::Initialize();
 	if (window == nullptr)
 		return -1;
-	
+
 	UIManager::Initialize(window);
 
-	float vertices[] = {
-		-0.5f, -0.5f,
-		 0.5f, -0.5f,
-		 0.0f,  0.5f,
+	Vertex vertices[] = {
+		{ { -0.5f, -0.5f }, { 0.1f, 0.2f, 0.8f, 1.0f } },
+		{ {  0.5f, -0.5f }, { 0.1f, 0.2f, 0.8f, 1.0f } },
+		{ {  0.0f,  0.5f }, { 0.1f, 0.2f, 0.8f, 1.0f } },		 
 	};
 
 	GLuint vb;
@@ -41,7 +41,7 @@ int main()
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)offsetof(Vertex, position));
 
 	while (!glfwWindowShouldClose(window))
 	{

@@ -2,3 +2,6 @@
 	path = OpenGLTestbench/vendor/imgui
 	url = https://github.com/ocornut/imgui
 	branch = docking
+[submodule "OpenGLTestbench/vendor/glm"]
+	path = OpenGLTestbench/vendor/glm
+	url = https://github.com/g-truc/glm
