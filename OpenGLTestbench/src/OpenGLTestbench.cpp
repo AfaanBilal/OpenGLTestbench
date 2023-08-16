@@ -14,7 +14,7 @@
 #include "backends/imgui_impl_glfw.h"
 #include "backends/imgui_impl_opengl3.h"
 
-#include "OpenGLTestbench.h"
+#include "Vertex.h"
 #include "WindowManager.h"
 #include "UIManager.h"
 #include "ShaderManager.h"
