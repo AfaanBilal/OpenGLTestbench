@@ -27,6 +27,7 @@
 #include "tests/Test.h"
 #include "tests/TestClearColor.h"
 #include "tests/TestBasicTriangle.h"
+#include "tests/TestBasicQuad.h"
 
 int main()
 {
@@ -37,33 +38,7 @@ int main()
 	if (window == nullptr)
 		return -1;
 
-	UIManager::Initialize(window);
-
-	/*Vertex vertices[] = {
-		{ { -0.5f, -0.5f }, { 0.1f, 0.8f, 0.8f, 1.0f } },
-		{ {  0.5f, -0.5f }, { 0.1f, 0.8f, 0.8f, 1.0f } },
-		{ {  0.5f,  0.5f }, { 0.1f, 0.8f, 0.8f, 1.0f } },
-		{ { -0.5f,  0.5f }, { 0.1f, 0.8f, 0.8f, 1.0f } },
-	};
-
-	VertexBuffer vb(vertices, sizeof(vertices));
-
-	VertexBufferLayout layout;
-	layout.Push<float>(2);
-	layout.Push<float>(4);
-
-	VertexArray va;
-	va.AddBuffer(vb, layout);
-
-	unsigned int indices[] = { 
-		0, 1, 2, 
-		2, 3, 0, 
-	};
-
-	IndexBuffer ib(indices, 6);
-
-	Shader shader("src/shaders/basic.vert", "src/shaders/basic.frag");*/
-	
+	UIManager::Initialize(window);	
 	Renderer renderer;
 
 	test::Test* current = nullptr;
@@ -72,6 +47,7 @@ int main()
 
 	menu->AddTest<test::TestClearColor>("Clear color");
 	menu->AddTest<test::TestBasicTriangle>("Basic Triangle");
+	menu->AddTest<test::TestBasicQuad>("Basic Quad");
 
 	while (!glfwWindowShouldClose(window))
 	{
