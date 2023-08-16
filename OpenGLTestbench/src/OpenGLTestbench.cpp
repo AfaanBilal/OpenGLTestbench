@@ -15,43 +15,19 @@
 #include "backends/imgui_impl_opengl3.h"
 
 #include "OpenGLTestbench.h"
+#include "WindowManager.h"
+#include "UIManager.h"
 
 int main()
 {
 	std::cout << "OpenGL Testbench" << std::endl;
 	std::cout << "(c) Afaan Bilal - https://afaan.dev" << std::endl;
 
-	GLFWwindow* window;
-
-	if (!glfwInit())
+	GLFWwindow* window = WindowManager::Initialize();
+	if (window == nullptr)
 		return -1;
-
-	window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE, NULL, NULL);
-	if (!window)
-	{
-		glfwTerminate();
-		return -1;
-	}
-
-	glfwMakeContextCurrent(window);
-
-	GLenum err = glewInit();
-	if (GLEW_OK != err)
-	{
-		std::cout << "GLEW Error: " << glewGetErrorString(err) << std::endl;
-	}
-	std::cout << "GLEW: " << glewGetString(GLEW_VERSION) << std::endl;
-
-	// Setup Dear ImGui context
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO();
-	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     
-	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-
-	// Setup Platform/Renderer backends
-	ImGui_ImplGlfw_InitForOpenGL(window, true);          // Second param install_callback=true will install GLFW callbacks and chain to existing ones.
-	ImGui_ImplOpenGL3_Init();
+	
+	UIManager::Initialize(window);
 
 	float vertices[] = {
 		-0.5f, -0.5f,
@@ -91,12 +67,7 @@ int main()
 		glfwSwapBuffers(window);
 	}
 
-	// Shutdown ImGui
-	ImGui_ImplOpenGL3_Shutdown();
-	ImGui_ImplGlfw_Shutdown();
-	ImGui::DestroyContext();
-	// Shutdown ImGui
-
-	glfwTerminate();
+	UIManager::Terminate();
+	WindowManager::Terminate();
 	return 0;
 }
