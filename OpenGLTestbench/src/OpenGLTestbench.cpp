@@ -18,6 +18,7 @@
 #include "WindowManager.h"
 #include "UIManager.h"
 #include "ShaderManager.h"
+#include "Renderer.h"
 
 #include "tests/TestClearColor.h"
 
@@ -33,7 +34,7 @@ int main()
 	UIManager::Initialize(window);
 
 	ShaderManager shaderManager("src/shaders/basic.vert", "src/shaders/basic.frag");
-	
+
 	Vertex vertices[] = {
 		{ { -0.5f, -0.5f }, { 0.1f, 0.8f, 0.8f, 1.0f } },
 		{ {  0.5f, -0.5f }, { 0.1f, 0.8f, 0.8f, 1.0f } },
@@ -51,10 +52,13 @@ int main()
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)offsetof(Vertex, color));
 
+	Renderer renderer;
 	test::TestClearColor test;
 
 	while (!glfwWindowShouldClose(window))
 	{
+		renderer.Clear();
+
 		test.OnUpdate(0.0f);
 		test.OnRender();
 
@@ -64,10 +68,8 @@ int main()
 
 		ImGui::ShowDemoWindow();
 
-		glClear(GL_COLOR_BUFFER_BIT);
-
 		shaderManager.Load();
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		renderer.Draw();
 
 		UIManager::RenderFrame();
 		glfwSwapBuffers(window);

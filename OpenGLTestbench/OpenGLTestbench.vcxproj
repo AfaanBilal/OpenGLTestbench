@@ -81,6 +81,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\OpenGLTestbench.h" />
+    <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\ShaderManager.h" />
     <ClInclude Include="src\tests\Test.h" />
     <ClInclude Include="src\tests\TestClearColor.h" />
@@ -97,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\OpenGLTestbench.cpp" />
+    <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\ShaderManager.cpp" />
     <ClCompile Include="src\tests\Test.cpp" />
     <ClCompile Include="src\tests\TestClearColor.cpp" />
