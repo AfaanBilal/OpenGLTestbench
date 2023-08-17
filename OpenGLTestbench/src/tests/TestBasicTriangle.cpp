@@ -23,7 +23,7 @@ namespace test
 		m_VAO = std::make_unique<VertexArray>();
 		m_VBO = std::make_unique<VertexBuffer>(m_Verticies, sizeof(m_Verticies));
 		m_IB = std::make_unique<IndexBuffer>(indices, 3);
-		m_Shader = std::make_unique<Shader>("res/shaders/basic_triangle.vert", "res/shaders/basic_triangle.frag");
+		m_Shader = std::make_unique<Shader>("res/shaders/basic_triangle_quad.vert", "res/shaders/basic_triangle_quad.frag");
 
 		VertexBufferLayout layout;
 		layout.Push<float>(2);
