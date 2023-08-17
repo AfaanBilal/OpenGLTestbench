@@ -87,6 +87,7 @@
     <ClInclude Include="src\tests\TestBasicQuad.h" />
     <ClInclude Include="src\tests\TestBasicTriangle.h" />
     <ClInclude Include="src\tests\TestClearColor.h" />
+    <ClInclude Include="src\tests\TestTexture2D.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\Vertex.h" />
     <ClInclude Include="src\VertexArray.h" />
@@ -114,6 +115,7 @@
     <ClCompile Include="src\tests\TestBasicQuad.cpp" />
     <ClCompile Include="src\tests\TestBasicTriangle.cpp" />
     <ClCompile Include="src\tests\TestClearColor.cpp" />
+    <ClCompile Include="src\tests\TestTexture2D.cpp" />
     <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\UIManager.cpp" />
     <ClCompile Include="src\VertexArray.cpp" />

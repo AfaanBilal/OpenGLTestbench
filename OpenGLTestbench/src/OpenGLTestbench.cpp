@@ -28,6 +28,7 @@
 #include "tests/TestClearColor.h"
 #include "tests/TestBasicTriangle.h"
 #include "tests/TestBasicQuad.h"
+#include "tests/TestTexture2D.h"
 
 int main()
 {
@@ -48,6 +49,7 @@ int main()
 	menu->AddTest<test::TestClearColor>("Clear color");
 	menu->AddTest<test::TestBasicTriangle>("Basic Triangle");
 	menu->AddTest<test::TestBasicQuad>("Basic Quad");
+	menu->AddTest<test::TestTexture2D>("Basic Texture 2D");
 
 	while (!glfwWindowShouldClose(window))
 	{
