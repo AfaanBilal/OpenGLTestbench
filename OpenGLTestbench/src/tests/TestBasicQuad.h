@@ -7,14 +7,27 @@
  * @link   https://github.com/AfaanBilal/OpenGLTestbench
  */
 
+#include "Renderer.h"
+#include "imgui.h"
 #include "glm/vec4.hpp"
 
+#include "VertexBuffer.h"
+#include "VertexBufferLayout.h"
+#include "IndexBuffer.h"
+#include "VertexArray.h"
+#include "Shader.h"
+
 #include "Test.h"
-#include "Vertex.h"
 
 namespace test
 {
-	class TestBasicQuad : public Test
+	struct VertexBasicQuad
+	{
+		glm::vec2 position;
+		glm::vec4 color;
+	};
+
+	class TestBasicQuad: public Test
 	{
 	public:
 		TestBasicQuad();
@@ -24,7 +37,6 @@ namespace test
 		void OnRender(Renderer& renderer) override;
 		void OnUIRender() override;
 	private:
-		Vertex m_Verticies[4];
-		glm::vec4 m_Color;
+		VertexBasicQuad m_Verticies[4];
 	};
 }
