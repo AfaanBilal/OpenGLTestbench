@@ -56,8 +56,8 @@ namespace test
 
 	void TestBasicTriangle::OnUIRender()
 	{
-		ImGui::DragFloat2("Point 1", &m_Verticies[0].position.x);
-		ImGui::DragFloat2("Point 2", &m_Verticies[1].position.x);
-		ImGui::DragFloat2("Point 3", &m_Verticies[2].position.x);
+		ImGui::DragFloat2("Point 1", &m_Verticies[0].position.x, 1.0f, -1.0f, 1.0f);
+		ImGui::DragFloat2("Point 2", &m_Verticies[1].position.x, 1.0f, -1.0f, 1.0f);
+		ImGui::DragFloat2("Point 3", &m_Verticies[2].position.x, 1.0f, -1.0f, 1.0f);
 	}
 }
