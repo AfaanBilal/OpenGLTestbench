@@ -24,9 +24,9 @@ namespace test
 	TestBasicTriangle::TestBasicTriangle()
 		: m_Color({ 0.4f, 0.3f, 0.2f, 1.0f }) 
 	{
-		m_Verticies[0] = { { -0.5f, -0.5f }, { 0.1f, 0.8f, 0.8f, 1.0f } };
-		m_Verticies[1] = { {  0.5f, -0.5f }, { 0.1f, 0.8f, 0.8f, 1.0f } };
-		m_Verticies[2] = { {  0.0f,  0.5f }, { 0.1f, 0.8f, 0.8f, 1.0f } };
+		m_Verticies[0] = { { -0.5f, -0.5f }, { 0.1f, 0.8f, 0.8f, 1.0f }, { 0.0f, 0.0f } };
+		m_Verticies[1] = { {  0.5f, -0.5f }, { 0.1f, 0.8f, 0.8f, 1.0f }, { 0.0f, 0.0f } };
+		m_Verticies[2] = { {  0.0f,  0.5f }, { 0.1f, 0.8f, 0.8f, 1.0f }, { 0.0f, 0.0f } };
 	}
 
 	TestBasicTriangle::~TestBasicTriangle() {}
@@ -40,6 +40,7 @@ namespace test
 		VertexBufferLayout layout;
 		layout.Push<float>(2);
 		layout.Push<float>(4);
+		layout.Push<float>(2);
 
 		VertexArray va;
 		va.AddBuffer(vb, layout);
@@ -48,7 +49,7 @@ namespace test
 
 		IndexBuffer ib(indices, 3);
 
-		Shader shader("src/shaders/basic.vert", "src/shaders/basic.frag");
+		Shader shader("res/shaders/basic.vert", "res/shaders/basic.frag");
 
 		renderer.Draw(va, ib, shader);
 	}
