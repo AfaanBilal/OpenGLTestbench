@@ -11,6 +11,7 @@
 #include <tuple>
 #include <unordered_map>
 
+#include "glm/glm.hpp"
 #include "glm/vec4.hpp"
 
 class Shader
@@ -25,6 +26,7 @@ public:
 
 	void SetUniform1i(const std::string& name, int value);
 	void SetUniform4f(const std::string& name, glm::vec4 value);
+	void SetUniformMat4f(const std::string& name, glm::mat4& value);
 private:
 	int m_RendererID;
 	std::unordered_map<std::string, int> m_UniformLocationCache;

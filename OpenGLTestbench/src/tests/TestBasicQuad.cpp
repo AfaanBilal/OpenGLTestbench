@@ -9,6 +9,8 @@
 #include <GL/glew.h>
 
 #include "imgui.h"
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 
 #include "TestBasicQuad.h"
 
@@ -54,11 +56,14 @@ namespace test
 
 		IndexBuffer ib(indices, 6);
 
+		//glm::mat4 proj = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f);
+
 		Shader shader("res/shaders/basic.vert", "res/shaders/basic.frag");
 
 		Texture texture("res/textures/bubble.png");
 		texture.Bind(0);
 		shader.SetUniform1i("u_Texture", 0);
+		//shader.SetUniformMat4f("u_MVP", proj);
 
 		renderer.Draw(va, ib, shader);
 	}

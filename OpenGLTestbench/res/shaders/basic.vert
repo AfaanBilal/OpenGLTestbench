@@ -6,6 +6,8 @@ layout (location = 2) in vec2 texCoords;
 out vec4 v_Color;
 out vec2 v_TexCoords;
 
+// uniform mat4 u_MVP;
+
 void main()
 {
 	gl_Position = position;
