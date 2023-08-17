@@ -31,10 +31,6 @@ namespace test
 		void OnRender(Renderer& renderer) override;
 		void OnUIRender() override;
 	private:
-		std::unique_ptr<VertexArray> m_VAO;
-		std::unique_ptr<VertexBuffer> m_VBO;
-		std::unique_ptr<IndexBuffer> m_IB;
-		std::unique_ptr<Shader> m_Shader;
 		std::unique_ptr<Texture> m_Texture;
 
 		glm::mat4 m_Proj, m_View;

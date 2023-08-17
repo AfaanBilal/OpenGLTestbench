@@ -23,6 +23,11 @@ namespace test
 		Test() {}
 		virtual ~Test() {}
 
+		std::unique_ptr<VertexArray> m_VAO;
+		std::unique_ptr<VertexBuffer> m_VBO;
+		std::unique_ptr<IndexBuffer> m_IB;
+		std::unique_ptr<Shader> m_Shader;
+
 		virtual void OnUpdate(float deltaTime) {}
 		virtual void OnRender(Renderer& renderer) {}
 		virtual void OnUIRender() {}
