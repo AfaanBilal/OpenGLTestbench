@@ -6,10 +6,6 @@
  * @link   https://github.com/AfaanBilal/OpenGLTestbench
  */
 
-#include <GL/glew.h>
-
-#include "imgui.h"
-
 #include "TestClearColor.h"
 
 namespace test

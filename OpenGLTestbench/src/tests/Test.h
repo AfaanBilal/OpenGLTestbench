@@ -7,11 +7,7 @@
  * @link   https://github.com/AfaanBilal/OpenGLTestbench
  */
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <functional>
-
+#include "pch.h"
 #include "Renderer.h"
 
 namespace test

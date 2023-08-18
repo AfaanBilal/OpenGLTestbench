@@ -6,10 +6,6 @@
  * @link   https://github.com/AfaanBilal/OpenGLTestbench
  */
 
-#include <iostream>
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
 #include "WindowManager.h"
 
 GLFWwindow* WindowManager::Initialize()

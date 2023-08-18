@@ -6,13 +6,6 @@
  * @link   https://github.com/AfaanBilal/OpenGLTestbench
  */
 
-#include <iostream>
-#include <string>
-#include <tuple>
-#include <fstream>
-#include <sstream>
-#include <GL/glew.h>
-
 #include "Shader.h"
 
 Shader::Shader(const char* vertexShaderFilepath, const char* fragmentShaderFilepath)

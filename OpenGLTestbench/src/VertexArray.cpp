@@ -6,9 +6,6 @@
  * @link   https://github.com/AfaanBilal/OpenGLTestbench
  */
 
-#include "Renderer.h"
-#include "Vertex.h"
-
 #include "VertexArray.h"
 
 VertexArray::VertexArray() : m_RendererID(0)

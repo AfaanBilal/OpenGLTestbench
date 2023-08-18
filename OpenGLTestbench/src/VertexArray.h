@@ -7,6 +7,8 @@
  * @link   https://github.com/AfaanBilal/OpenGLTestbench
  */
 
+#include "pch.h"
+
 #include "VertexBuffer.h"
 #include "VertexBufferLayout.h"
 

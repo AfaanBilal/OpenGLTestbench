@@ -6,8 +6,6 @@
  * @link   https://github.com/AfaanBilal/OpenGLTestbench
  */
 
-#include "imgui.h"
-
 #include "Test.h"
 
 namespace test

@@ -7,7 +7,7 @@
  * @link   https://github.com/AfaanBilal/OpenGLTestbench
  */
 
-#include "Renderer.h"
+#include "pch.h"
 
 class Texture
 {

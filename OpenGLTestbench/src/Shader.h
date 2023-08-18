@@ -7,12 +7,7 @@
  * @link   https://github.com/AfaanBilal/OpenGLTestbench
  */
 
-#include <string>
-#include <tuple>
-#include <unordered_map>
-
-#include "glm/glm.hpp"
-#include "glm/vec4.hpp"
+#include "pch.h"
 
 class Shader
 {

@@ -7,9 +7,7 @@
  * @link   https://github.com/AfaanBilal/OpenGLTestbench
  */
 
-#include <vector>
-
-#include "Renderer.h"
+#include "pch.h"
 
 struct VertexBufferElement
 {

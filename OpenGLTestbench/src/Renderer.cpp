@@ -8,10 +8,6 @@
 
 #include "Renderer.h"
 
-#include "VertexArray.h"
-#include "IndexBuffer.h"
-#include "Shader.h"
-
 Renderer::Renderer() {}
 
 Renderer::~Renderer() {}

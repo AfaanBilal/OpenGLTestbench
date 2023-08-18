@@ -7,10 +7,9 @@
  * @link   https://github.com/AfaanBilal/OpenGLTestbench
  */
 
-#include "glm/vec4.hpp"
+#include "pch.h"
 
 #include "Renderer.h"
-
 #include "Test.h"
 
 namespace test

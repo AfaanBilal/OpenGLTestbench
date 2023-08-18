@@ -6,13 +6,7 @@
  * @link   https://github.com/AfaanBilal/OpenGLTestbench
  */
 
-#include <iostream>
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-
-#include "imgui.h"
-#include "backends/imgui_impl_glfw.h"
-#include "backends/imgui_impl_opengl3.h"
+#include "pch.h"
 
 #include "Vertex.h"
 #include "WindowManager.h"

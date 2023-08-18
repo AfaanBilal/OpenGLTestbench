@@ -7,12 +7,8 @@
  * @link   https://github.com/AfaanBilal/OpenGLTestbench
  */
 
-#include <memory>
-
+#include "pch.h"
 #include "Renderer.h"
-
-#include "imgui.h"
-#include "glm/gtc/matrix_transform.hpp"
 
 #include "Vertex.h"
 #include "Texture.h"
