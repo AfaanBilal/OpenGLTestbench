@@ -33,7 +33,7 @@ namespace test
 		~TestBasicQuad();
 
 		void OnUpdate(float deltaTime) override;
-		void OnRender(Renderer& renderer) override;
+		void OnRender() override;
 		void OnUIRender() override;
 	private:
 		VertexBasicQuad m_Verticies[4];

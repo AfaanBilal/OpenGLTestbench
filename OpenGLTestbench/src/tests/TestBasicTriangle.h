@@ -33,7 +33,7 @@ namespace test
 		~TestBasicTriangle();
 
 		void OnUpdate(float deltaTime) override;
-		void OnRender(Renderer& renderer) override;
+		void OnRender() override;
 		void OnUIRender() override;
 	private:
 		VertexBasicTriangle m_Verticies[3];

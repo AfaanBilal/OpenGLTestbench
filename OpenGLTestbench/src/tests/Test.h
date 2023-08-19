@@ -25,7 +25,7 @@ namespace test
 		std::unique_ptr<Shader> m_Shader;
 
 		virtual void OnUpdate(float deltaTime) {}
-		virtual void OnRender(Renderer& renderer) {}
+		virtual void OnRender() {}
 		virtual void OnUIRender() {}
 	};
 

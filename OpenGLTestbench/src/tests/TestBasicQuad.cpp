@@ -37,10 +37,10 @@ namespace test
 
 	void TestBasicQuad::OnUpdate(float deltaTime) {}
 
-	void TestBasicQuad::OnRender(Renderer& renderer)
+	void TestBasicQuad::OnRender()
 	{
 		m_VBO->SetData(m_Verticies, sizeof(m_Verticies));
-		renderer.Draw(*m_VAO, *m_IB, *m_Shader);
+		Renderer::Draw(*m_VAO, *m_IB, *m_Shader);
 	}
 
 	void TestBasicQuad::OnUIRender()

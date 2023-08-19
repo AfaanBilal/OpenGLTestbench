@@ -24,7 +24,7 @@ namespace test
 		~TestTexture2D();
 
 		void OnUpdate(float deltaTime) override;
-		void OnRender(Renderer& renderer) override;
+		void OnRender() override;
 		void OnUIRender() override;
 	private:
 		std::unique_ptr<Texture> m_Texture;

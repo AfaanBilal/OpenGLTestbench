@@ -49,7 +49,7 @@ namespace test
 
 	void TestTexture2D::OnUpdate(float deltaTime) {}
 
-	void TestTexture2D::OnRender(Renderer& renderer)
+	void TestTexture2D::OnRender()
 	{
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -62,7 +62,7 @@ namespace test
 		m_Shader->Bind();
 		m_Shader->SetUniformMat4f("u_MVP", mvp);
 
-		renderer.Draw(*m_VAO, *m_IB, *m_Shader);
+		Renderer::Draw(*m_VAO, *m_IB, *m_Shader);
 	}
 
 	void TestTexture2D::OnUIRender()

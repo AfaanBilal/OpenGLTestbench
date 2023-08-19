@@ -34,8 +34,7 @@ int main()
 		return -1;
 
 	UIManager::Initialize(window);	
-	Renderer renderer;
-
+	
 	test::Test* current = nullptr;
 	test::Menu* menu = new test::Menu(current);
 	current = menu;
@@ -47,14 +46,14 @@ int main()
 
 	while (!glfwWindowShouldClose(window))
 	{
-		renderer.Clear();
+		Renderer::Clear();
 
 		UIManager::SetupFrame();
 
 		if (current)
 		{
 			current->OnUpdate(0.0f);
-			current->OnRender(renderer);
+			current->OnRender();
 
 			ImGui::Begin("Test");
 			

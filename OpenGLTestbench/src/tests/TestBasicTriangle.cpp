@@ -35,10 +35,10 @@ namespace test
 
 	void TestBasicTriangle::OnUpdate(float deltaTime) {}
 
-	void TestBasicTriangle::OnRender(Renderer& renderer)
+	void TestBasicTriangle::OnRender()
 	{
 		m_VBO->SetData(m_Verticies, sizeof(m_Verticies));
-		renderer.Draw(*m_VAO, *m_IB, *m_Shader);
+		Renderer::Draw(*m_VAO, *m_IB, *m_Shader);
 	}
 
 	void TestBasicTriangle::OnUIRender()
