@@ -134,7 +134,7 @@ namespace test
 		u8 r = (u8)(coord.x * 255.0f);
 		u8 g = (u8)(coord.y * 255.0f);
 
-		glm::vec3 rayOrigin(0.0f, 0.0f, 2.0f);
+		glm::vec3 rayOrigin(0.0f, 0.0f, 1.0f);
 		glm::vec3 rayDirection(coord.x, coord.y, -1.0f);
 		float radius = 0.5f;
 		//rayDirection = glm::normalize(rayDirection);
@@ -156,16 +156,13 @@ namespace test
 		if (D < 0)
 			return glm::vec4(0, 0, 0, 1); // black background
 
-		//float t0((- b + glm::sqrt(D)) / (2.0f * a));
 		float closeHit((- b - glm::sqrt(D)) / (2.0f * a));
 
 		glm::vec3 hit = rayOrigin + rayDirection * closeHit;
+		glm::vec3 normal = glm::normalize(hit);
 
-		glm::vec3 sphereColor = hit;
-		return glm::vec4(sphereColor, 1); // pink sphere
-
-		// ABGR
-		//return 0xff000000 | (g << 8) | r;
+		glm::vec3 sphereColor = normal * 0.5f + 0.5f;
+		return glm::vec4(sphereColor, 1);
 	}
 
 	void TestRaytracing::OnUIRender() {}
