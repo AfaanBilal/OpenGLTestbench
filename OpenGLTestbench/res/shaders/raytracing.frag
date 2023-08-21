@@ -1,10 +1,12 @@
 #version 330 core
 
+uniform vec3 u_RayOrigin;
+
 out vec4 color;
 
 void main()
 {
-	vec3 rayOrigin = vec3(0.0f, 0.0f, 1.0f);
+	vec3 rayOrigin = u_RayOrigin;
 	float x = (gl_FragCoord.x / 800.0f) * 2.0f - 1.0f;
 	float y = (gl_FragCoord.y / 800.0f) * 2.0f - 1.0f;
 	vec3 rayDirection = vec3(x, y, -1.0f);

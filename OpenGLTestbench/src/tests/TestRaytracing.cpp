@@ -74,7 +74,7 @@ namespace test
 	// ---
 	//
 
-	TestRaytracing::TestRaytracing()
+	TestRaytracing::TestRaytracing() : m_RayOrigin(0.0f, 0.0f, 1.0f)
 	{
 		float viewportVerticies[] = {
 			-1.0f, -1.0f, 0.0f, 0.0f,
@@ -118,7 +118,9 @@ namespace test
 		glClearColor(0.1f, 0.2f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		m_Shader->Bind();
 #if ON_GPU
+		m_Shader->SetUniform3f("u_RayOrigin", m_RayOrigin);
 #else
 		for (int y = 0; y < m_Texture->GetHeight(); y++) {
 			for (int x = 0; x < m_Texture->GetWidth(); x++) {
@@ -133,7 +135,7 @@ namespace test
 
 		m_Texture->Reset();
 #endif
-		m_Shader->Bind();
+		
 
 		Renderer::Draw(*m_VAO, *m_IB, *m_Shader);
 	}
@@ -179,5 +181,8 @@ namespace test
 		return glm::vec4(sphereColor, 1);
 	}
 
-	void TestRaytracing::OnUIRender() {}
+	void TestRaytracing::OnUIRender() 
+	{
+		ImGui::SliderFloat3("Ray Origin", &m_RayOrigin.x, -1.0f, 1.0f);
+	}
 }

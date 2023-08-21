@@ -49,5 +49,6 @@ namespace test
 		glm::vec4 PixelColor(glm::vec2 coord) const;
 	private:
 		std::unique_ptr<MemoryTexture> m_Texture;
+		glm::vec3 m_RayOrigin;
 	};
 }

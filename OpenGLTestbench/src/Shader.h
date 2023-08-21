@@ -19,12 +19,13 @@ public:
 	void Bind() const;
 	void Unbind() const;
 
-	void SetUniform1i(const std::string& name, int value);
-	void SetUniform4f(const std::string& name, glm::vec4 value);
-	void SetUniformMat4f(const std::string& name, glm::mat4& value);
+	void SetUniform1i(const std::string& name, int value) const;
+	void SetUniform3f(const std::string& name, glm::vec3 value) const;
+	void SetUniform4f(const std::string& name, glm::vec4 value) const;
+	void SetUniformMat4f(const std::string& name, glm::mat4& value) const;
 private:
 	int m_RendererID;
-	std::unordered_map<std::string, int> m_UniformLocationCache;
+	mutable std::unordered_map<std::string, int> m_UniformLocationCache;
 
-	int GetUniformLocation(const std::string& name);
+	int GetUniformLocation(const std::string& name) const;
 };
