@@ -8,6 +8,8 @@
 
 #include "TestRaytracing.h"
 
+#define ON_GPU 1
+
 static u32 g_seed = 20394792385;
 inline u32 fastrand() {
 	g_seed = (214013 * g_seed + 2531011);
@@ -89,7 +91,11 @@ namespace test
 		m_VAO = std::make_unique<VertexArray>();
 		m_VBO = std::make_unique<VertexBuffer>(viewportVerticies, sizeof(viewportVerticies));
 		m_IB = std::make_unique<IndexBuffer>(indices, 6);
+#if ON_GPU
 		m_Shader = std::make_unique<Shader>("res/shaders/raytracing.vert", "res/shaders/raytracing.frag");
+#else
+		m_Shader = std::make_unique<Shader>("res/shaders/raytracing.vert", "res/shaders/raytracing_tex.frag");
+#endif
 
 		VertexBufferLayout layout;
 		layout.Push<float>(2);
@@ -112,6 +118,8 @@ namespace test
 		glClearColor(0.1f, 0.2f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+#if ON_GPU
+#else
 		for (int y = 0; y < m_Texture->GetHeight(); y++) {
 			for (int x = 0; x < m_Texture->GetWidth(); x++) {
 				glm::vec2 coord = { (float)x / (float)m_Texture->GetWidth(), (float)y / (float)m_Texture->GetHeight() };
@@ -124,6 +132,7 @@ namespace test
 		}
 
 		m_Texture->Reset();
+#endif
 		m_Shader->Bind();
 
 		Renderer::Draw(*m_VAO, *m_IB, *m_Shader);
@@ -154,7 +163,7 @@ namespace test
 		if (D < 0)
 			return glm::vec4(0, 0, 0, 1); // black background
 
-		float closeHit((- b - glm::sqrt(D)) / (2.0f * a));
+		float closeHit((-b - glm::sqrt(D)) / (2.0f * a));
 
 		glm::vec3 hit = rayOrigin + rayDirection * closeHit;
 		glm::vec3 normal = glm::normalize(hit);
