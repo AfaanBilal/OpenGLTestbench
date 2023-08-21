@@ -49,8 +49,5 @@ namespace test
 		u32 PixelColor(glm::vec2 coord) const;
 	private:
 		std::unique_ptr<MemoryTexture> m_Texture;
-
-		glm::mat4 m_Proj, m_View;
-		glm::vec3 m_Translation;
 	};
 }
