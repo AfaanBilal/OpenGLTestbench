@@ -90,6 +90,9 @@
     <ClInclude Include="src\pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\tests\TestRaytracing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\OpenGLTestbench.cpp">
@@ -159,6 +162,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\TestRaytracing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

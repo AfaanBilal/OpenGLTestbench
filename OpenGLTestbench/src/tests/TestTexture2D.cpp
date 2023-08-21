@@ -67,7 +67,6 @@ namespace test
 
 	void TestTexture2D::OnUIRender()
 	{
-		ImGui::Text("Texture2D Test (%.1f FPS %.3f ms per frame)", ImGui::GetIO().Framerate, 1000.0f / ImGui::GetIO().Framerate);
 		ImGui::SliderFloat3("Translation", &m_Translation.x, -1.0f, 1.0f);
 	}
 }

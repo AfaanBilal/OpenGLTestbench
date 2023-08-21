@@ -23,6 +23,7 @@
 #include "tests/TestBasicTriangle.h"
 #include "tests/TestBasicQuad.h"
 #include "tests/TestTexture2D.h"
+#include "tests/TestRaytracing.h"
 
 int main()
 {
@@ -43,6 +44,7 @@ int main()
 	menu->AddTest<test::TestBasicTriangle>("Basic Triangle");
 	menu->AddTest<test::TestBasicQuad>("Basic Quad");
 	menu->AddTest<test::TestTexture2D>("Basic Texture 2D");
+	menu->AddTest<test::TestRaytracing>("Raytracing");
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -56,6 +58,7 @@ int main()
 			current->OnRender();
 
 			ImGui::Begin("Test");
+			ImGui::Text("%.1f FPS %.3f ms per frame", ImGui::GetIO().Framerate, 1000.0f / ImGui::GetIO().Framerate);
 			
 			if (current != menu && ImGui::Button("<-"))
 			{
