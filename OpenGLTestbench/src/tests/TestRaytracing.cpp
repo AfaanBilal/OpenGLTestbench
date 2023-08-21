@@ -166,7 +166,8 @@ namespace test
 
 		float d = glm::max(glm::dot(normal, -lightDirection), 0.0f); // cos(angle) -> clamp to min 0
 
-		glm::vec3 sphereColor = normal * 0.5f + 0.5f;
+		//glm::vec3 sphereColor = normal * 0.5f + 0.5f;
+		glm::vec3 sphereColor = glm::vec3(1, 0, 1);
 		sphereColor *= d;
 
 		return glm::vec4(sphereColor, 1);
