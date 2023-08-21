@@ -14,10 +14,20 @@ inline u32 fastrand() {
 	return (g_seed >> 16) & 0x7FFF;
 }
 
+static u32 ConvertToRGBA(const glm::vec4& color)
+{
+	u8 r = (u8)(color.r * 255.0f);
+	u8 g = (u8)(color.g * 255.0f);
+	u8 b = (u8)(color.b * 255.0f);
+	u8 a = (u8)(color.a * 255.0f);
+
+	return (a << 24) | (b << 16) | (g << 8) | r;
+}
+
 namespace test
 {
 	MemoryTexture::MemoryTexture()
-		: m_RendererID(0), m_LocalBuffer(nullptr), m_Width(1200), m_Height(800)
+		: m_RendererID(0), m_LocalBuffer(nullptr), m_Width(SCREEN_WIDTH), m_Height(SCREEN_HEIGHT)
 	{
 		m_LocalBuffer = new u32[m_Width * m_Height];
 
@@ -105,23 +115,57 @@ namespace test
 		for (int y = 0; y < m_Texture->GetHeight(); y++) {
 			for (int x = 0; x < m_Texture->GetWidth(); x++) {
 				glm::vec2 coord = { (float)x / (float)m_Texture->GetWidth(), (float)y / (float)m_Texture->GetHeight() };
-				m_Texture->m_LocalBuffer[y * m_Texture->GetWidth() + x] = PixelColor(coord);
+				coord = coord * 2.0f - 1.0f; // (0, 1) -> (-1, 1)
+
+				glm::vec4 color = PixelColor(coord);
+				color = glm::clamp(color, glm::vec4(0.0f), glm::vec4(1.0f));
+				m_Texture->m_LocalBuffer[y * m_Texture->GetWidth() + x] = ConvertToRGBA(color);
 			}
 		}
-		
+
 		m_Texture->Reset();
 		m_Shader->Bind();
 
 		Renderer::Draw(*m_VAO, *m_IB, *m_Shader);
 	}
 
-	u32 TestRaytracing::PixelColor(glm::vec2 coord) const
+	glm::vec4 TestRaytracing::PixelColor(glm::vec2 coord) const
 	{
 		u8 r = (u8)(coord.x * 255.0f);
 		u8 g = (u8)(coord.y * 255.0f);
 
+		glm::vec3 rayOrigin(0.0f, 0.0f, 2.0f);
+		glm::vec3 rayDirection(coord.x, coord.y, -1.0f);
+		float radius = 0.5f;
+		//rayDirection = glm::normalize(rayDirection);
+
+		// (bx^2 + by^2)t^2 + (2(axbx + ayby))t + (ax^2 + ay^2 - r^2) = 0
+		// ^a                 ^b                  ^c
+		// a = ray origin
+		// b = ray direction
+		// r = radius
+		// t = hit distance
+
+		float a = glm::dot(rayDirection, rayDirection);
+		float b = 2.0f * glm::dot(rayOrigin, rayDirection);
+		float c = glm::dot(rayOrigin, rayOrigin) - radius * radius;
+
+		float D = b * b - 4 * a * c;
+
+		// no hits
+		if (D < 0)
+			return glm::vec4(0, 0, 0, 1); // black background
+
+		//float t0((- b + glm::sqrt(D)) / (2.0f * a));
+		float closeHit((- b - glm::sqrt(D)) / (2.0f * a));
+
+		glm::vec3 hit = rayOrigin + rayDirection * closeHit;
+
+		glm::vec3 sphereColor = hit;
+		return glm::vec4(sphereColor, 1); // pink sphere
+
 		// ABGR
-		return 0xff000000 | (g << 8) | r;
+		//return 0xff000000 | (g << 8) | r;
 	}
 
 	void TestRaytracing::OnUIRender() {}

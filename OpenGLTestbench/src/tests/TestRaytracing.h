@@ -8,7 +8,7 @@
  */
 
 #include "pch.h"
-#include "Renderer.h"
+#include "WindowManager.h"
 
 #include "Test.h"
 
@@ -46,7 +46,7 @@ namespace test
 		void OnRender() override;
 		void OnUIRender() override;
 	private:
-		u32 PixelColor(glm::vec2 coord) const;
+		glm::vec4 PixelColor(glm::vec2 coord) const;
 	private:
 		std::unique_ptr<MemoryTexture> m_Texture;
 	};
