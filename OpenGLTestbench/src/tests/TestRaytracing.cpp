@@ -107,10 +107,8 @@ namespace test
 
 		for (int y = 0; y < m_Texture->GetHeight(); y++) {
 			for (int x = 0; x < m_Texture->GetWidth(); x++) {
-				u32 v = fastrand();
-				//u32 v = 0xff00ff00;
-				v |= 0xff000000; // full alpha
-				m_Texture->m_LocalBuffer[y * m_Texture->GetWidth() + x] = v; // ABGR
+				glm::vec2 coord = { (float)x / (float)m_Texture->GetWidth(), (float)y / (float)m_Texture->GetHeight() };
+				m_Texture->m_LocalBuffer[y * m_Texture->GetWidth() + x] = PixelColor(coord);
 			}
 		}
 		
@@ -120,8 +118,14 @@ namespace test
 		Renderer::Draw(*m_VAO, *m_IB, *m_Shader);
 	}
 
-	void TestRaytracing::OnUIRender()
+	u32 TestRaytracing::PixelColor(glm::vec2 coord) const
 	{
-		
+		u8 r = (u8)(coord.x * 255.0f);
+		u8 g = (u8)(coord.y * 255.0f);
+
+		// ABGR
+		return 0xff000000 | (g << 8) | r;
 	}
+
+	void TestRaytracing::OnUIRender() {}
 }

@@ -10,15 +10,9 @@
 #include "pch.h"
 #include "Renderer.h"
 
-#include "VertexBuffer.h"
-#include "VertexBufferLayout.h"
-#include "IndexBuffer.h"
-#include "VertexArray.h"
-#include "Shader.h"
-#include "Texture.h"
-
 #include "Test.h"
 
+typedef uint8_t  u8;
 typedef uint32_t u32;
 
 namespace test
@@ -36,8 +30,8 @@ namespace test
 		void Unbind() const;
 		void Reset() const;
 
-		inline unsigned int GetWidth() { return m_Width; }
-		inline unsigned int GetHeight() { return m_Height; }
+		inline size_t GetWidth() { return m_Width; }
+		inline size_t GetHeight() { return m_Height; }
 
 		u32* m_LocalBuffer;
 	};
@@ -51,6 +45,8 @@ namespace test
 		void OnUpdate(float deltaTime) override;
 		void OnRender() override;
 		void OnUIRender() override;
+	private:
+		u32 PixelColor(glm::vec2 coord) const;
 	private:
 		std::unique_ptr<MemoryTexture> m_Texture;
 
