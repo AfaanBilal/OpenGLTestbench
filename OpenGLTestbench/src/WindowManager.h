@@ -11,7 +11,7 @@
 
 #define SCREEN_WIDTH  1200
 #define SCREEN_HEIGHT 1200
-#define WINDOW_TITLE  "OpenGL Testbench"
+#define WINDOW_TITLE  "OpenGL Testbench by Afaan Bilal"
 
 class WindowManager
 {
