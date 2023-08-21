@@ -57,10 +57,16 @@ int main()
 			current->OnUpdate(0.0f);
 			current->OnRender();
 
-			ImGui::Begin("Test");
+			ImGui::Begin("OpenGL Testbench");
+			ImGui::Text("Author: Afaan Bilal");
+			ImGui::Text("https://afaan.dev");
+			ImGui::Separator();
 			ImGui::Text("%.1f FPS %.3f ms per frame", ImGui::GetIO().Framerate, 1000.0f / ImGui::GetIO().Framerate);
-			
-			if (current != menu && ImGui::Button("<-"))
+			ImGui::End();
+
+			ImGui::Begin("Test");
+
+			if (current != menu && ImGui::Button("Close", { 100, 40 }))
 			{
 				delete current;
 				current = menu;

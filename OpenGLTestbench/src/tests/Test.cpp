@@ -16,7 +16,7 @@ namespace test
 	{
 		for (auto& test : m_Tests)
 		{
-			if (ImGui::Button(test.first.c_str()))
+			if (ImGui::Button(test.first.c_str(), { 250, 40 }))
 				current = test.second();
 		}
 	}

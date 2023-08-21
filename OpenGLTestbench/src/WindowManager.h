@@ -9,8 +9,8 @@
 
 #include "pch.h"
 
-#define SCREEN_WIDTH  800
-#define SCREEN_HEIGHT 800
+#define SCREEN_WIDTH  1200
+#define SCREEN_HEIGHT 1200
 #define WINDOW_TITLE  "OpenGL Testbench"
 
 class WindowManager
