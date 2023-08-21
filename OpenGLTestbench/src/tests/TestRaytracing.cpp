@@ -150,6 +150,7 @@ namespace test
 		float b = 2.0f * glm::dot(rayOrigin, rayDirection);
 		float c = glm::dot(rayOrigin, rayOrigin) - radius * radius;
 
+		// Discriminant
 		float D = b * b - 4 * a * c;
 
 		// no hits
@@ -161,7 +162,13 @@ namespace test
 		glm::vec3 hit = rayOrigin + rayDirection * closeHit;
 		glm::vec3 normal = glm::normalize(hit);
 
+		glm::vec3 lightDirection = glm::normalize(glm::vec3(-1, -1, -1));
+
+		float d = glm::max(glm::dot(normal, -lightDirection), 0.0f); // cos(angle) -> clamp to min 0
+
 		glm::vec3 sphereColor = normal * 0.5f + 0.5f;
+		sphereColor *= d;
+
 		return glm::vec4(sphereColor, 1);
 	}
 
