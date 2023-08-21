@@ -131,9 +131,6 @@ namespace test
 
 	glm::vec4 TestRaytracing::PixelColor(glm::vec2 coord) const
 	{
-		u8 r = (u8)(coord.x * 255.0f);
-		u8 g = (u8)(coord.y * 255.0f);
-
 		glm::vec3 rayOrigin(0.0f, 0.0f, 1.0f);
 		glm::vec3 rayDirection(coord.x, coord.y, -1.0f);
 		float radius = 0.5f;
