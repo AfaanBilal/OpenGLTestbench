@@ -5,6 +5,8 @@ Author: [Afaan Bilal](https://afaan.dev)
 
 A series of graphics tests implemented in C++ using OpenGL (GLEW), GLFW, GLM, Dear ImGui and STB.
 
+![OpenGL Testbench](/assets/opengl-testbench.png)
+
 ## Testbench tests:
 
 - Clear color
